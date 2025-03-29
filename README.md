@@ -29,3 +29,18 @@ docker compose up --watch # Auto rebuild on changes
 There may be some error messages initially, but it should stabilize within a few seconds once all services are up and running.
 
 You should be able to access the Dagster UI at http://localhost:3000.
+
+## Adding New Packages
+
+In case you want to add additional dependencies, run:
+```bash
+uv add <Package name>
+```
+
+Then run:
+```bash
+uv lock  # Updates dependencies without upgrading existing ones
+# or
+uv lock --upgrade  # To upgrade and update the lock file
+uv sync  # To install from the lock file
+```
