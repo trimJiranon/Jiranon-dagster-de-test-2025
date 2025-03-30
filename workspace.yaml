@@ -1,3 +1,5 @@
 load_from:
-  - python_package:
-      package_name: dagster_pipelines
+  - grpc_server:
+      host: dagster_code_location
+      port: 4000
+      location_name: "dagster_pipelines"

@@ -3,7 +3,7 @@ services:
     container_name: dagster_webserver
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: Dockerfile
     entrypoint:
       - dagster-webserver
       - -h
@@ -26,7 +26,7 @@ services:
     container_name: dagster_daemon
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: Dockerfile
     entrypoint:
       - dagster-daemon
       - run
@@ -39,17 +39,7 @@ services:
     container_name: dagster_code_location
     build:
       context: .
-      dockerfile: ./Dockerfile
-    entrypoint:
-      - dagster
-      - code-server
-      - start
-      - -h
-      - "0.0.0.0"
-      - -p
-      - "4000"
-      - -m
-      - dagster_pipelines.definitions
+      dockerfile: Dockerfile
     env_file:
       - .env
     ports:
@@ -65,7 +55,7 @@ services:
           action: rebuild
         - path: workspace.yaml
           action: rebuild
-        - path: ./Dockerfile
+        - path: Dockerfile
           action: rebuild
     volumes:
       - ./dagster_pipelines:/opt/dagster/app/dagster_pipelines

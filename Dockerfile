@@ -16,3 +16,6 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 ADD . /opt/dagster/app
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen --no-dev
+
+EXPOSE 4000
+CMD ["dagster", "code-server", "start", "-h", "0.0.0.0", "-p", "4000", "-m", "dagster_pipelines.definitions"]
