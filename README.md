@@ -26,6 +26,8 @@ via Docker:
 docker compose build
 docker compose up --watch # Auto rebuild on changes
 ```
+> **Note:** To reload code after making changes, go to the "Deployment" tab and click "Reload All."
+
 There may be some error messages initially, but it should stabilize within a few seconds once all services are up and running.
 
 You should be able to access the Dagster UI at http://localhost:3000.
