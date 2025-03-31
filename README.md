@@ -32,6 +32,8 @@ There may be some error messages initially, but it should stabilize within a few
 
 You should be able to access the Dagster UI at http://localhost:3000.
 
+> In case of using GitHub Codespaces, after starting your Dagster instance, open the "Ports" tab in the GitHub Codespaces interface. You should see a forwarded port 3000. Click on the link to access the Dagster UI directly.
+
 ## Adding New Packages
 
 In case you want to add additional dependencies, run:
