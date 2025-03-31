@@ -59,7 +59,8 @@ services:
           action: rebuild
     volumes:
       - ./dagster_pipelines:/opt/dagster/app/dagster_pipelines
-      - ./db:/opt/dagster/app/db
+      - ./dagster_pipelines/db/:/opt/dagster/app/dagster_pipelines/db/
+  
   db:
     container_name: dagster_db
     image: postgres:16.4
