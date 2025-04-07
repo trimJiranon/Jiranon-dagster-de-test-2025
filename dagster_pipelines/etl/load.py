@@ -7,7 +7,7 @@ logger = get_dagster_logger()
 
 def load_to_duckdb(df: pd.DataFrame, table_name: str) -> None:
     try:
-        db_path = os.getenv("DUCKDB_PATH", "/tmp/plan.db")
+        db_path = os.getenv("DUCKDB_PATH")
         os.makedirs(os.path.dirname(db_path), exist_ok=True)
         with duckdb.connect(db_path) as con:
             logger.info("Connected to DuckDB successfully.")

@@ -18,10 +18,10 @@ def m_center(context: dg.AssetExecutionContext):
     load_to_duckdb(M_Center, table_name="M_Center")
     return M_Center
 
-# # 2.3.2 Create asset kpi_fy_final_asset()
-# @dg.asset(compute_kind="duckdb", group_name="plan")
-# def kpi_fy_final_asset(context: dg.AssetExecutionContext, kpi_fy, m_center):
-#     kpi_fy_final = kpi_fy.merge(m_center, how="left", on="Center_Name")
-#     kpi_fy_final["updated_at"] = kpi_fy_final.Timestamp.now()
-#     load_to_duckdb(kpi_fy_final, table_name="KPI_FY_FINAL")
-#     return kpi_fy_final
+# 2.3.2 Create asset kpi_fy_final_asset()
+@dg.asset(compute_kind="duckdb", group_name="plan")
+def kpi_fy_final_asset(context: dg.AssetExecutionContext, kpi_fy, m_center):
+    kpi_fy_final = kpi_fy.merge(m_center, how="left", on="Center_ID")
+    kpi_fy_final["updated_at"] = kpi_fy_final.Timestamp.now()
+    load_to_duckdb(kpi_fy_final, table_name="KPI_FY_FINAL")
+    return kpi_fy_final
