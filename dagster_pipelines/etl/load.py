@@ -1,12 +1,15 @@
 from dagster import get_dagster_logger
 import duckdb
 import pandas as pd
+import os
 
 logger = get_dagster_logger()
 
 def load_to_duckdb(df: pd.DataFrame, table_name: str) -> None:
     try:
-        with duckdb.connect("/opt/dagster/app/dagster_pipelines/db/plan.db") as con:
+        db_path = os.getenv("DUCKDB_PATH", "/tmp/plan.db")
+        os.makedirs(os.path.dirname(db_path), exist_ok=True)
+        with duckdb.connect(db_path) as con:
             logger.info("Connected to DuckDB successfully.")
             
             con.sql("CREATE SCHEMA IF NOT EXISTS plan;")
